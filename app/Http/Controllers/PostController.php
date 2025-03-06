@@ -12,7 +12,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return Post::find();
+        return Post::all();
     }
 
     /**
@@ -25,14 +25,17 @@ class PostController extends Controller
             'body' => 'required'
         ]);
 
+        $post = Post::create($fields);
+
         return $post;
     }
 
     /**
      * Display the specified resource.
      */
-    public function show()
+    public function show($id)
     {
+        $post = Post::find($id);
         return $post;
     }
 
